@@ -5,10 +5,6 @@ const nextConfig = {
   images: {
     domains: ['localhost'],
   },
-  experimental: {
-    appDir: false,
-  },
 }
 
 module.exports = nextConfig
-
