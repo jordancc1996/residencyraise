@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Custom CSS Variables for Sage and Cream Theme */
+:root {
+  --sage: #8B9A8B;
+  --forest: #4A5D4A;
+  --cream: #F7F5F3;
+  --off-white: #FEFEFE;
+  --charcoal-green: #2D3A2D;
+  --medium-sage: #6B7A6B;
+  --light-sage: #A8B5A8;
+  --warm-cream: #F9F7F5;
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--off-white);
+  color: var(--charcoal-green);
+  line-height: 1.6;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Custom Component Classes */
+@layer components {
+  .service-card {
+    @apply bg-cream/30 border border-sage/20 backdrop-blur-sm;
+    transition: all 0.3s ease;
+  }
+  
+  .service-card:hover {
+    @apply shadow-xl border-sage/40 bg-cream/50;
+    transform: translateY(-2px);
+  }
+  
+  .btn-primary {
+    @apply bg-forest hover:bg-sage text-off-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:shadow-xl hover:scale-105;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-sage text-forest hover:bg-sage hover:text-off-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:shadow-xl;
+  }
+  
+  .hero-gradient {
+    background: linear-gradient(135deg, #F7F5F3 0%, #F9F7F5 50%, rgba(139, 154, 139, 0.1) 100%);
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, var(--sage), var(--forest));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Accessibility Enhancements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus styles for better accessibility */
+*:focus {
+  outline: 2px solid var(--sage);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --sage: #4A5D4A;
+    --forest: #2D3A2D;
+    --medium-sage: #4A5D4A;
+  }
+}
+
+/* Loading states */
+.loading {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sage);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--forest);
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
